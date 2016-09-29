@@ -1,7 +1,6 @@
 version: '2'
 services:
   gitlab:
-    build: .
     ports:
      - "443:443"
      - "80:80"
@@ -10,4 +9,12 @@ services:
      - /srv/gitlab/log:/var/log/gitlab
      - /srv/gitlab/data:/var/opt/gitlab
     image: gitlab/gitlab-ce:latest
+  jenkins:
+    ports:
+     - "8080:8080"
+     - "50000:50000"
+    volumes:
+     - /srv/jenkins/:/var/jenkins_home
+    user: root
+    image: jenkins:latest
 
